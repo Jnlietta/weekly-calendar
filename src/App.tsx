@@ -2,8 +2,12 @@ import React from 'react';
 
 const App: React.FC = () => {
   return (
-    <div>
-      <h1>Weekly Calendar</h1>
+    <div className="App">
+      <header className="App-header">
+        <p>
+          Weekly Calendar
+        </p>
+      </header>
     </div>
   );
 };
