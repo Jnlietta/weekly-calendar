@@ -1,13 +1,10 @@
 import React from 'react';
+import WeeklyCalendar from './components/WeeklyCalendar/WeeklyCalendar';
 
 const App: React.FC = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          Weekly Calendar
-        </p>
-      </header>
+      <WeeklyCalendar />
     </div>
   );
 };

@@ -1,0 +1,12 @@
+.weekly-calendar {
+    padding: 16px;
+    background-color: #f9f9f9;
+  }
+  
+  .grid {
+    display: grid;
+  }
+  
+  .gap-4 {
+    gap: 16px;
+  }
