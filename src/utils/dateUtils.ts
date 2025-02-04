@@ -5,8 +5,15 @@ export const formatDateShort = (date: Date) => {
 
 // Function to format date to string in format: "weekday day month" PL language (e.g. "poniedziałek, 1 stycznia")
 export const formatDateLong = (date: Date) => {
-    return date.toLocaleDateString('pl-PL', { weekday: 'long', day: 'numeric', month: '2-digit'})
-  };
+  const formattedDate = date.toLocaleDateString('pl-PL', {
+    weekday: 'long', 
+    day: 'numeric', 
+    month: '2-digit'
+  });
+  
+  // Remove comma and replace space with newline
+  return formattedDate.replace(',', '').replace(' ', '\n');
+};
 
 // Function to get current week (from Monday to Sunday) based on provided date
 export const getCurrentWeek = (date: Date = new Date()): Date[] => {
