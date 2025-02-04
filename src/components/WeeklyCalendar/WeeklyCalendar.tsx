@@ -45,12 +45,12 @@ const WeeklyCalendar: React.FC = () => {
         currentWeekStartDate={currentWeekStartDate}
       />
 
-      <div className='flex'>
+      <div className='flex w-full'>
         <TimeColumn hours={columnHours} />
 
-        <div className="grid grid-cols-7 flex-1">
+        <div className="calendar grid grid-cols-7 flex-1 border-4 rounded-3xl overflow-hidden">
           {currentWeek.map((day, index) => (
-            <div key={index} className="text-center border">
+            <div key={index} className="calendar-column text-center">
               <DayCell date={day} />
               <EventsList 
                 events={filteredEvents}

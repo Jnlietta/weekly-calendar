@@ -23,13 +23,13 @@ const EventsList: React.FC<EventsListProps> = ({ events, date, columnHours }) =>
             .filter(event => event.date === date.toISOString().split('T')[0])
             .map((event, eventIndex) => (
                 <li 
-                key={eventIndex} 
-                className="event-cell h-16 rounded text-center p-2 bg-blue-500 text-white absolute"
-                style={{
-                    top: `${(event.hour - columnHours[0]) * hourHeight}px`, // set the top position based on the hour
-                    height: `${hourHeight}px`, 
-                    width: "100%",
-                }}
+                  key={eventIndex} 
+                  className="event-cell h-16 rounded text-center p-2 bg-blue-500 text-white absolute"
+                  style={{
+                      top: `${(event.hour - columnHours[0]) * hourHeight}px`, // set the top position based on the hour
+                      height: `${hourHeight}px`, 
+                      width: "100%",
+                  }}
                 >
                     {event.title} {event.hour}
                 </li>
