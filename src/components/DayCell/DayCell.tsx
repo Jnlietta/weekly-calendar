@@ -8,8 +8,8 @@ interface DayCellProps {
 const DayCell: React.FC<DayCellProps> = ({ date }) => {
 
 return (
-    <p className="font-bold bg-red-50 p-2">{formatDateLong(date)}</p>
-);
+    <p className="day-cell font-bold bg-red-50 p-2 h-[64px]">{formatDateLong(date)}</p>
+  );
 };
 
 export default DayCell;

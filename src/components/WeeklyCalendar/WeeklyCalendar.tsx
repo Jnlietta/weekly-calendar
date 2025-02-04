@@ -3,23 +3,26 @@ import { getCurrentWeek } from '../../utils/dateUtils';
 import WeekSelector from '../WeekSelector/WeekSelector';
 import DayCell from '../DayCell/DayCell';
 import EventsList from '../EventsList/EventsList';
+import TimeColumn from '../TimeColumn/TimeColumn';
+
+const columnHours = Array.from({ length: 16 }, (_, i) => 7 + i);
 
 const events = [
-  { date: '2025-01-29', title: 'Spotkanie z klientem' },
-  { date: '2025-02-03', title: 'Spotkanie z klientem' },
-  { date: '2025-02-04', title: 'Warsztaty React' },
-  { date: '2025-02-05', title: 'Spotkanie zespołu' },
-  { date: '2025-02-15', title: 'Spotkanie zespołu' },
-  { date: '2025-01-29', title: 'Spotkanie z klientem' },
-  { date: '2025-02-03', title: 'Spotkanie z klientem' },
-  { date: '2025-02-04', title: 'Warsztaty React' },
-  { date: '2025-02-05', title: 'Spotkanie zespołu' },
-  { date: '2025-02-15', title: 'Spotkanie zespołu' },
-  { date: '2025-01-29', title: 'Spotkanie z klientem' },
-  { date: '2025-02-03', title: 'Spotkanie z klientem' },
-  { date: '2025-02-04', title: 'Warsztaty React' },
-  { date: '2025-02-05', title: 'Spotkanie zespołu' },
-  { date: '2025-02-15', title: 'Spotkanie zespołu' },
+  { date: '2025-01-29', hour: 7, title: 'Spotkanie z klientem' },
+  { date: '2025-02-03', hour: 8, title: 'Spotkanie z klientem' },
+  { date: '2025-02-04', hour: 9, title: 'Warsztaty React' },
+  { date: '2025-02-05', hour: 10, title: 'Spotkanie zespołu' },
+  { date: '2025-02-15', hour: 11, title: 'Spotkanie zespołu' },
+  { date: '2025-01-29', hour: 12, title: 'Spotkanie z klientem' },
+  { date: '2025-02-03', hour: 13, title: 'Spotkanie z klientem' },
+  { date: '2025-02-04', hour: 14, title: 'Warsztaty React' },
+  { date: '2025-02-05', hour: 15, title: 'Spotkanie zespołu' },
+  { date: '2025-02-15', hour: 16, title: 'Spotkanie zespołu' },
+  { date: '2025-01-29', hour: 17, title: 'Spotkanie z klientem' },
+  { date: '2025-02-03', hour: 18, title: 'Spotkanie z klientem' },
+  { date: '2025-02-04', hour: 19, title: 'Warsztaty React' },
+  { date: '2025-02-05', hour: 20, title: 'Spotkanie zespołu' },
+  { date: '2025-02-15', hour: 21, title: 'Spotkanie zespołu' },
 ];
 
 const WeeklyCalendar: React.FC = () => {
@@ -42,14 +45,23 @@ const WeeklyCalendar: React.FC = () => {
         currentWeekStartDate={currentWeekStartDate}
       />
 
-      <div className="grid grid-cols-7 gap-1 w-full">
-        {currentWeek.map((day, index) => (
-          <div key={index} className="text-center border">
-            <DayCell date={day} />
-            <EventsList events={filteredEvents} date={day} />
-          </div>
-        ))}
+      <div className='flex'>
+        <TimeColumn hours={columnHours} />
+
+        <div className="grid grid-cols-7 flex-1">
+          {currentWeek.map((day, index) => (
+            <div key={index} className="text-center border">
+              <DayCell date={day} />
+              <EventsList 
+                events={filteredEvents}
+                date={day}
+                columnHours={columnHours}
+              />
+            </div>
+          ))}
+        </div>
       </div>
+
     </div>
   );
 };
