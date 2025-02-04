@@ -1,5 +1,5 @@
 import React from 'react';
-import { formatDate } from '../../utils/dateUtils';
+import { formatDateShort } from '../../utils/dateUtils';
 
 interface WeekSelectorProps {
   onChangeWeek: (newWeekStartDate: Date) => void;
@@ -8,8 +8,8 @@ interface WeekSelectorProps {
 
 const WeekSelector: React.FC<WeekSelectorProps> = ({ onChangeWeek, currentWeekStartDate }) => {
 
-    const startDayFormated = formatDate(currentWeekStartDate);
-    const endDayFormated = formatDate(new Date(currentWeekStartDate.getTime() + 6 * 24 * 60 * 60 * 1000));
+    const startDayFormated = formatDateShort(currentWeekStartDate);
+    const endDayFormated = formatDateShort(new Date(currentWeekStartDate.getTime() + 6 * 24 * 60 * 60 * 1000));
 
     const handlePrevWeek = () => {
         const prevWeek = new Date(currentWeekStartDate);
