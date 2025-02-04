@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { getCurrentWeek } from '../../utils/dateUtils';
 import WeekSelector from '../WeekSelector/WeekSelector';
 import DayCell from '../DayCell/DayCell';
+import EventsList from '../EventsList/EventsList';
 
 const events = [
   { date: '2025-01-29', title: 'Spotkanie z klientem' },
@@ -45,13 +46,7 @@ const WeeklyCalendar: React.FC = () => {
         {currentWeek.map((day, index) => (
           <div key={index} className="text-center border">
             <DayCell date={day} />
-            <ul>
-              {filteredEvents
-                .filter(event => event.date === day.toISOString().split('T')[0])
-                .map((event, eventIndex) => (
-                  <li key={eventIndex}>{event.title}</li>
-                ))}
-            </ul>
+            <EventsList events={filteredEvents} date={day} />
           </div>
         ))}
       </div>
