@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    @apply font-bodyLato;
+  }
+
+h2 {
+    @apply font-bold font-header;
+  }

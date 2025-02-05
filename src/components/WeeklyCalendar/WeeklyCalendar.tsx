@@ -39,7 +39,7 @@ const WeeklyCalendar: React.FC = () => {
   );
 
   return (
-    <div className="weekly-calendar flex flex-col items-center gap-4 p-2">
+    <div className="weekly-calendar flex flex-col items-center gap-4 p-2 bg-background">
       <WeekSelector
         onChangeWeek={handleWeekChange}
         currentWeekStartDate={currentWeekStartDate}

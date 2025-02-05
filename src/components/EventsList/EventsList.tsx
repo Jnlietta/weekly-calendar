@@ -24,7 +24,7 @@ const EventsList: React.FC<EventsListProps> = ({ events, date, columnHours }) =>
             .map((event, eventIndex) => (
                 <li 
                   key={eventIndex} 
-                  className="event-cell h-16 rounded text-center p-2 bg-blue-500 text-white absolute"
+                  className="event-cell h-16 rounded text-center p-2 bg-primary-100 text-primary-900 absolute"
                   style={{
                       top: `${(event.hour - columnHours[0]) * hourHeight}px`, // set the top position based on the hour
                       height: `${hourHeight}px`, 
