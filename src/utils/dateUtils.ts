@@ -15,6 +15,12 @@ export const formatDateLong = (date: Date) => {
   return formattedDate.replace(',', '').replace(' ', '\n');
 };
 
+export const getCurrentWeekMonday = (date: Date = new Date()): Date => {
+  const startOfWeek = new Date(date);
+  startOfWeek.setDate(date.getDate() - date.getDay() + 1); // Monday
+  return startOfWeek;
+};
+
 // Function to get current week (from Monday to Sunday) based on provided date
 export const getCurrentWeek = (date: Date = new Date()): Date[] => {
     const startOfWeek = new Date(date);

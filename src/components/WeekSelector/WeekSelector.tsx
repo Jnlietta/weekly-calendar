@@ -7,7 +7,6 @@ interface WeekSelectorProps {
 }
 
 const WeekSelector: React.FC<WeekSelectorProps> = ({ onChangeWeek, currentWeekStartDate }) => {
-
     const startDayFormated = formatDateShort(currentWeekStartDate);
     const endDayFormated = formatDateShort(new Date(currentWeekStartDate.getTime() + 6 * 24 * 60 * 60 * 1000));
 

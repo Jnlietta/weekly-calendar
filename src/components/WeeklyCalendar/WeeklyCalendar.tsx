@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { getCurrentWeek } from '../../utils/dateUtils';
+import { getCurrentWeek, getCurrentWeekMonday } from '../../utils/dateUtils';
 import WeekSelector from '../WeekSelector/WeekSelector';
 import DayCell from '../DayCell/DayCell';
 import EventsList from '../EventsList/EventsList';
@@ -26,8 +26,8 @@ const events = [
 ];
 
 const WeeklyCalendar: React.FC = () => {
-  const [currentWeekStartDate, setCurrentWeekStartDate] = useState<Date>(new Date());
-
+  const [currentWeekStartDate, setCurrentWeekStartDate] = useState<Date>(getCurrentWeekMonday(new Date()));
+  
   const handleWeekChange = (newWeekStartDate: Date) => {
     setCurrentWeekStartDate(newWeekStartDate);
   };

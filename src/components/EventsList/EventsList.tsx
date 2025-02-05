@@ -8,12 +8,6 @@ interface EventsListProps {
 
 const EventsList: React.FC<EventsListProps> = ({ events, date, columnHours }) => {
 
-    console.log("eventslist", events);
-    console.log("date", date);
-    console.log("columnHours", columnHours);
-    console.log("columnHours[0]", columnHours[0]);
-
-
     const hourHeight = 64;
 
   return (
