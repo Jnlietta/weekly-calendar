@@ -1,7 +1,13 @@
 import React from "react";
 
 interface EventsListProps {
-  events: { date: string; hour: number; title: string }[];
+  events: { 
+    date: string; 
+    hourStart: number; 
+    hourEnd: number; 
+    title: string; 
+    status: 'busy' | 'free' | 'booked'; 
+  }[];
   date: Date;
   columnHours: number[];
 }
@@ -20,12 +26,12 @@ const EventsList: React.FC<EventsListProps> = ({ events, date, columnHours }) =>
                   key={eventIndex} 
                   className="event-cell h-16 rounded text-center p-2 bg-primary-100 text-primary-900 absolute"
                   style={{
-                      top: `${(event.hour - columnHours[0]) * hourHeight}px`, // set the top position based on the hour
+                      top: `${(event.hourStart - columnHours[0]) * hourHeight}px`, // set the top position based on the hour
                       height: `${hourHeight}px`, 
                       width: "100%",
                   }}
                 >
-                    {event.title} {event.hour}
+                    {event.title} {event.hourStart}:00 - {event.hourEnd}:00
                 </li>
             ))}
         </ul>
