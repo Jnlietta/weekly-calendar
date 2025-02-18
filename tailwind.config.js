@@ -22,6 +22,7 @@ module.exports = {
           800: '#9B2C2C',  // Very dark red
         },
         background: '#F4F4F4',  // Gray (background)
+        lightText: '#999999',  // White
         dark: '#2C2C2C',  // Dark gray (text)
         highlight: '#FFD700',  // Gold
         danger: '#F44336',  // Red

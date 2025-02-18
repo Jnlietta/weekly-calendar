@@ -22,7 +22,7 @@ const EventCell: React.FC<EventCellProps> = ({event, eventIndex, columnHours}) =
         <div 
             key={eventIndex} 
             className={`event-cell flex flex-col place-content-between  text-center font-bold p-1 absolute 
-                shadow-md cursor-pointer select-none flex-shrink-0 w-24 h-24 bg-white border-t-4
+                shadow-md cursor-pointer select-none flex-shrink-0 w-24 h-24 bg-background border-t-4
                 ${isFree ? 'border-t-free-800 text-free-800' : ''}
                 ${isBooked ? 'border-t-booked-800 text-booked-800' : ''}
                 ${isBusy ? 'border-t-busy-800 text-busy-800' : ''}`

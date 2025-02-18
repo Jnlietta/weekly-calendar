@@ -44,16 +44,16 @@ const WeeklyCalendar: React.FC = () => {
   );
 
   return (
-    <div className="weekly-calendar flex flex-col items-center gap-4 p-2 bg-background">
+    <div className="weekly-calendar flex flex-col items-center gap-4 p-2">
       <WeekSelector
         onChangeWeek={handleWeekChange}
         currentWeekStartDate={currentWeekStartDate}
       />
 
-      <div className='flex w-full'>
+      <div className='calendar-container flex w-full rounded-sm bg-white shadow-[0px_2px_4px_0px_rgba(0,0,0,0.5)]'>
         <TimeColumn hours={columnHours} />
 
-        <div className="calendar grid grid-cols-7 flex-1 border-4 rounded-3xl overflow-hidden">
+        <div className="calendar grid grid-cols-7 flex-1 overflow-hidden">
           {currentWeek.map((day, index) => (
             <div key={index} className="calendar-column text-center">
               <DayCell date={day} />
