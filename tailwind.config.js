@@ -6,23 +6,20 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: {
-          100: '#A5D6A7',  // Jaśniejszy zielony
-          200: '#81C784',  // Jaśniejszy zielony
-          800: '#388E3C',  // Ciemniejszy zielony
-          900: '#1B5E20',  // Bardzo ciemny zielony
+        free: {
+          100: '#E3F9E5',  // Lighter green
+          500: '#38A169',  // Darker green
+          800: '#22543D',  // Very dark green
         },
-        secondary: {
-          100: '#81D4FA',  // Jaśniejszy błękit
-          200: '#4FC3F7',  // Jaśniejszy błękit
-          800: '#0288D1',  // Ciemniejszy błękit
-          900: '#01579B',  // Bardzo ciemny błękit
+        booked: {
+          100: '#E0F2FF',  // Lighter blue
+          500: '#3182CE',  // Darker blue
+          800: '#1C3D5D',  // Very dark blue
         },
-        accent: {
-          100: '#FFCCBC',  // Jaśniejszy pomarańczowy
-          200: '#FFAB91',  // Jaśniejszy pomarańczowy
-          800: '#D32F2F',  // Ciemniejszy pomarańczowy
-          900: '#C62828',  // Bardzo ciemny pomarańczowy
+        busy: {
+          100: '#FDE8E8',  // Lighter red
+          500: '#F87272',  // Darker red
+          800: '#9B2C2C',  // Very dark red
         },
         background: '#F5F5F5',  // Szary (tło)
         dark: '#2C2C2C',  // Ciemnoszary (tekst)

@@ -5,10 +5,12 @@ interface TimeColumnProps {
 }
 
 const TimeColumn: React.FC<TimeColumnProps> = ({ hours }) => {
+    const hourHeight = 130;
+
     return (
         <div className="time-column flex flex-col w-20 mt-[64px]">
         {hours.map((hour) => (
-            <div key={hour} className="flex items-center justify-center h-16">
+            <div key={hour} className="flex items-center justify-center" style={{ height: `${hourHeight}px` }}>
             {hour}:00
             </div>
         ))}
