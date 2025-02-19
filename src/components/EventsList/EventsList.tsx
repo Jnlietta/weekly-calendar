@@ -17,7 +17,7 @@ const EventsList: React.FC<EventsListProps> = ({ events, date, columnHours }) =>
 
 
   return (
-    <div className="events-list px-1">
+    <div className="events-list">
         <div className="relative">
             {events
             .filter(event => event.date === date.toISOString().split('T')[0])

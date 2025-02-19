@@ -7,6 +7,20 @@ body {
     @apply bg-background;
   }
 
-/* h2 {
-    @apply font-bold font-heading;
-  } */
+  .weekly-calendar {
+    max-width: 1200px; 
+    width: 100%; 
+    margin: 0 auto;
+  }
+
+  @layer components {
+    .grid-horizontal-line::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;   
+      height: 1px;    
+      border-bottom: 1px dotted #D1D5DB;
+    }
+  }
