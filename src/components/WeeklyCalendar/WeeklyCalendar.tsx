@@ -50,10 +50,10 @@ const WeeklyCalendar: React.FC = () => {
         currentWeekStartDate={currentWeekStartDate}
       />
 
-      <div className='calendar-container flex w-full rounded-sm bg-white shadow-[0px_2px_4px_0px_rgba(0,0,0,0.5)] overflow-hidden'>
+      <div className='calendar-container flex w-full rounded-sm bg-white shadow-[0px_2px_4px_0px_rgba(0,0,0,0.5)] overflow-hidden  overflow-hidden relative day-cell-background'>
         <TimeColumn hours={columnHours} />
 
-        <div className="calendar grid grid-cols-7 flex-1 overflow-hidden">
+        <div className="calendar grid grid-cols-7 flex-1">
           {currentWeek.map((day, index) => (
             <div key={index} className="calendar-column text-center border-dotted border-l">
               <DayCell date={day} />
