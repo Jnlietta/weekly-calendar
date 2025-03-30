@@ -1,11 +1,10 @@
-type EventStatus = 'busy' | 'free' | 'booked';
-
 interface Event {
   date: string;
   hourStart: number;
   hourEnd: number;
   title: string;
-  status: EventStatus;
+  status: 'busy' | 'free' | 'booked';
+  showDetails: boolean; 
 }
 
 const initialState = {

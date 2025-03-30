@@ -1,5 +1,5 @@
 /* selectors */
-export const getAll = ({ events }) => events;
+export const getEvents = ({ events }) => events;
 
 /* action name creator */
 const reducerName = 'events';

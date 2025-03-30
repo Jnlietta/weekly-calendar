@@ -1,38 +1,30 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { getCurrentWeek, getCurrentWeekMonday } from '../../utils/dateUtils';
 import WeekSelector from '../WeekSelector/WeekSelector';
 import DayCell from '../DayCell/DayCell';
 import EventsList from '../EventsList/EventsList';
 import TimeColumn from '../TimeColumn/TimeColumn';
+import { getEvents } from '../../redux/eventsRedux';
+
+
+interface Event {
+  date: string;
+  hourStart: number;
+  hourEnd: number;
+  title: string;
+  status: 'busy' | 'free' | 'booked';
+  showDetails: boolean;
+}
 
 const columnHours = Array.from({ length: 16 }, (_, i) => 7 + i);
 
-const events = [
-  { date: '2025-01-29', hourStart: 7, hourEnd: 8, title: 'Spotkanie z klientem', status: 'busy' as 'busy' },
-  { date: '2025-02-03', hourStart: 8, hourEnd: 9, title: 'Spotkanie z klientem', status: 'free' as 'free' },
-  { date: '2025-02-04', hourStart: 9, hourEnd: 10, title: 'Warsztaty React', status: 'busy' as 'busy' },
-  { date: '2025-02-05', hourStart: 10, hourEnd: 11, title: 'Spotkanie zespołu', status: 'booked' as 'booked' },
-  { date: '2025-02-15', hourStart: 11, hourEnd: 12, title: 'Spotkanie zespołu', status: 'free' as 'free' },
-  { date: '2025-01-29', hourStart: 12, hourEnd: 13, title: 'Spotkanie z klientem', status: 'busy' as 'busy' },
-  { date: '2025-02-03', hourStart: 13, hourEnd: 14, title: 'Spotkanie z klientem', status: 'free' as 'free' },
-  { date: '2025-02-04', hourStart: 14, hourEnd: 15, title: 'Warsztaty React', status: 'free' as 'free' },
-  { date: '2025-02-05', hourStart: 15, hourEnd: 16, title: 'Spotkanie zespołu', status: 'busy' as 'busy' },
-  { date: '2025-02-15', hourStart: 16, hourEnd: 17, title: 'Spotkanie zespołu', status: 'free' as 'free' },
-  { date: '2025-01-29', hourStart: 17, hourEnd: 18, title: 'Spotkanie z klientem', status: 'busy' as 'busy' },
-  { date: '2025-02-03', hourStart: 18, hourEnd: 19, title: 'Spotkanie z klientem', status: 'free' as 'free' },
-  { date: '2025-02-04', hourStart: 19, hourEnd: 20, title: 'Warsztaty React', status: 'free' as 'free' },
-  { date: '2025-02-05', hourStart: 20, hourEnd: 21, title: 'Spotkanie zespołu', status: 'free' as 'free' },
-  { date: '2025-02-15', hourStart: 21, hourEnd: 22, title: 'Spotkanie zespołu', status: 'free' as 'free' },
-  { date: '2025-02-18', hourStart: 8, hourEnd: 9, title: 'Warsztaty JavaScript', status: 'free' as 'free' },
-  { date: '2025-02-19', hourStart: 10, hourEnd: 11, title: 'Spotkanie z zespołem IT', status: 'busy' as 'busy' },
-  { date: '2025-02-20', hourStart: 14, hourEnd: 15, title: 'Szkolenie UX', status: 'free' as 'free' },
-  { date: '2025-02-21', hourStart: 16, hourEnd: 17, title: 'Spotkanie z klientem', status: 'booked' as 'booked' },
-  { date: '2025-02-22', hourStart: 9, hourEnd: 10, title: 'Spotkanie zespołu', status: 'free' as 'free' },
-];
 
 const WeeklyCalendar: React.FC = () => {
   const [currentWeekStartDate, setCurrentWeekStartDate] = useState<Date>(getCurrentWeekMonday(new Date()));
   
+  const events = useSelector(getEvents) as Event[];
+
   const handleWeekChange = (newWeekStartDate: Date) => {
     setCurrentWeekStartDate(newWeekStartDate);
   };
