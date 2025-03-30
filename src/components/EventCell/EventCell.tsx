@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { toggleEventDetails } from "../../redux/eventsRedux";
+import EventDetailsModal from "../EventDetailsModal/EventDetailsModal";
 
 interface EventCellProps {
     event: { 
@@ -23,7 +24,7 @@ const EventCell: React.FC<EventCellProps> = ({event, columnHours}) => {
 
     const dispatch = useDispatch();
 
-    const handleClickClose = (itemId: string) => (e: React.MouseEvent) => {
+    const handleClickToggleDetails = (itemId: string) => (e: React.MouseEvent) => {
       e.preventDefault();
       dispatch(toggleEventDetails(itemId));
     };
@@ -42,7 +43,7 @@ const EventCell: React.FC<EventCellProps> = ({event, columnHours}) => {
                 height: `${hourHeight}px`, 
                 width: "100%",
             }}
-            onClick={handleClickClose(event.id.toString())}
+            onClick={handleClickToggleDetails(event.id.toString())}
             
         >
             <div className="event-time text-xs mb-1">
@@ -66,6 +67,18 @@ const EventCell: React.FC<EventCellProps> = ({event, columnHours}) => {
                     Termin zajęty
                 </div>
             ) : null}
+
+            {event.showDetails && (
+                <EventDetailsModal 
+                    isVisible={event.showDetails} 
+                    onClose={() => dispatch(toggleEventDetails(event.id.toString()))}
+                >
+                    <div className="text-center">
+                        <h2 className="text-xl font-bold">{event.title}</h2>
+                        <p className="text-sm">{event.hourStart}:00 - {event.hourEnd}:00</p>
+                    </div>
+                </EventDetailsModal>
+            )}
         </div>
     );
     };
