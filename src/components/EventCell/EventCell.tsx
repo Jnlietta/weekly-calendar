@@ -1,26 +1,36 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { toggleEventDetails } from "../../redux/eventsRedux";
 
 interface EventCellProps {
     event: { 
+        id: number
         date: string; 
         hourStart: number; 
         hourEnd: number; 
         title: string; 
         status: 'busy' | 'free' | 'booked'; 
+        showDetails: boolean; 
     };
-    eventIndex: number;
     columnHours: number[];
 }
 
-const EventCell: React.FC<EventCellProps> = ({event, eventIndex, columnHours}) => {
+const EventCell: React.FC<EventCellProps> = ({event, columnHours}) => {
     const hourHeight = 140;
     const isFree = event.status === 'free'; 
     const isBooked = event.status === 'booked';
     const isBusy = event.status === 'busy';
 
+    const dispatch = useDispatch();
+
+    const handleClickClose = (itemId: string) => (e: React.MouseEvent) => {
+      e.preventDefault();
+      dispatch(toggleEventDetails(itemId));
+    };
+
     return (
         <div 
-            key={eventIndex} 
+            key={event.id} 
             className={`event-cell flex flex-col place-content-between  text-center font-bold p-1 absolute 
                 shadow-md cursor-pointer select-none flex-shrink-0 w-24 h-24 bg-background border-t-4
                 ${isFree ? 'border-t-free-800 text-free-800' : ''}
@@ -32,6 +42,8 @@ const EventCell: React.FC<EventCellProps> = ({event, eventIndex, columnHours}) =
                 height: `${hourHeight}px`, 
                 width: "100%",
             }}
+            onClick={handleClickClose(event.id.toString())}
+            
         >
             <div className="event-time text-xs mb-1">
                 {event.hourStart}:00 - {event.hourEnd}:00

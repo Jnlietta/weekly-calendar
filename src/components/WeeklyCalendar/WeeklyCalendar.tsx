@@ -9,6 +9,7 @@ import { getEvents } from '../../redux/eventsRedux';
 
 
 interface Event {
+  id: number;
   date: string;
   hourStart: number;
   hourEnd: number;

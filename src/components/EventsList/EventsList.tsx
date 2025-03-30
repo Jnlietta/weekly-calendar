@@ -3,11 +3,13 @@ import EventCell from "../EventCell/EventCell";
 
 interface EventsListProps {
   events: { 
+    id: number;
     date: string; 
     hourStart: number; 
     hourEnd: number; 
     title: string; 
     status: 'busy' | 'free' | 'booked'; 
+    showDetails: boolean;
   }[];
   date: Date;
   columnHours: number[];
@@ -21,11 +23,10 @@ const EventsList: React.FC<EventsListProps> = ({ events, date, columnHours }) =>
         <div className="relative">
             {events
             .filter(event => event.date === date.toISOString().split('T')[0])
-            .map((event, eventIndex) => (
+            .map(event => (
                 <EventCell 
-                    key={eventIndex} 
+                    key={event.id} 
                     event={event} 
-                    eventIndex={eventIndex} 
                     columnHours={columnHours}
                 />
             ))}
