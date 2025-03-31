@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { toggleEventDetails } from "../../redux/eventsRedux";
 import EventDetailsModal from "../EventDetailsModal/EventDetailsModal";
+import EventDetails from "../EventDetails/EventDetails";
 
 interface EventCellProps {
     event: { 
@@ -73,10 +74,7 @@ const EventCell: React.FC<EventCellProps> = ({event, columnHours}) => {
                     isVisible={event.showDetails} 
                     onClose={() => dispatch(toggleEventDetails(event.id.toString()))}
                 >
-                    <div className="text-center">
-                        <h2 className="text-xl font-bold">{event.title}</h2>
-                        <p className="text-sm">{event.hourStart}:00 - {event.hourEnd}:00</p>
-                    </div>
+                    <EventDetails event={event} />
                 </EventDetailsModal>
             )}
         </div>
